@@ -8,9 +8,9 @@
 
         <ul style="list-style-type: none;">
             {% for blog in blogs %}
-                <li><h3><a href={{ url_for('blogid' ,id=blog.id) }}>{{blog.blog_title}}</a></h3> 
+                <!-- <li><h3><a href={{ url_for('blogid' ,id=blog.id) }}>{{blog.blog_title}}</a></h3> -->
                                           
-                <!--<li><h3><a href="/blog/{{blog.id}}">{{blog.blog_title}}</a></h3>-->
+                <li><h3><a href="/blog?id={{blog.id}}">{{blog.blog_title}}</a></h3>
                 {{blog.blog_post}}
                 </li>
             <hr/>

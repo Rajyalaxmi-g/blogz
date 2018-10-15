@@ -19,18 +19,23 @@ class Blog(db.Model):
         self.blog_title = blog_title
         self.blog_post = blog_post
 
-@app.route('/blog', methods=['GET'])
-def main_blog():
-    blogs = Blog.query.all()
+#@app.route('/blog', methods=['GET'])
+#def main_blog():
+#    blogs = Blog.query.all()
     
-    return render_template("mainblog.html", blogs = blogs)
+#    return render_template("mainblog.html", blogs = blogs)
 
-@app.route('/blog/id', methods=['GET'])
+@app.route('/blog', methods=['GET'])
 def blogid():
     id = request.args.get('id')
-    print("our id = " , id)
-    indi_post = Blog.query.filter_by(id=id).first()
-    print("individual = " ,indi_post.blog_title,indi_post.blog_post)
+    if id is None:
+        blogs = Blog.query.all()
+        return render_template("mainblog.html", blogs = blogs)
+    else:
+
+        print("our id = " , id)
+        indi_post = Blog.query.filter_by(id=id).first()
+        print("individual = " ,indi_post.blog_title,indi_post.blog_post)
     return render_template('individualpost.html',indi_post=indi_post)
 
 
@@ -59,7 +64,7 @@ def new_post():
             print("commit= ",db.session.commit())
             id = new_blogs.id
             print("id value = ", id)
-            return redirect('/blog/id')
+            return redirect('/blog?id='+ str(id))
 
                
     return render_template('post_newblog.html')
