@@ -19,12 +19,6 @@ class Blog(db.Model):
         self.blog_title = blog_title
         self.blog_post = blog_post
 
-#@app.route('/blog', methods=['GET'])
-#def main_blog():
-#    blogs = Blog.query.all()
-    
-#    return render_template("mainblog.html", blogs = blogs)
-
 @app.route('/blog', methods=['GET'])
 def blogid():
     id = request.args.get('id')
