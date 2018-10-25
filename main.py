@@ -142,7 +142,7 @@ def mainblog():
         user = User.query.all()
         return render_template("mainblog.html", blogs=blogs, user=user)
 
-#@app.route('/blog/<user>',) 
+
 
 
 @app.route('/newpost', methods=['POST','GET'])

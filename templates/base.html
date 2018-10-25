@@ -9,20 +9,46 @@
             a{display:inline-block;
             margin:0px;
             padding:10px;}
+            
+            .home{
+                float:left;
+                font-size: 20px;
+            }
+            .log{
+                float:right;
+                font-size:20px;
+            }
+            body{
+                margin:0;
+                background:lightgrey;
+
+            }
+            #maincontent{
+                margin: 0 auto;
+                background: lightgray;
+                padding: 20px;
+                width:860px;
+                border-top: none;
+    
+            }
+            
         </style>
     </head>
-<body>
-    <nav>
+<body >
+    <header>
+    <nav class="nav">
+        <div class="home">
         <a href="/">Home</a>
         <a href="/blog">All Posts</a>
-        <a href="/newpost">New Post</a>
+        <a href="/newpost">New Post</a></div>
+        <div class="log">
         <a href="/login">Login</a>
         
-        <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a></div>
     </nav>
+    </header>
 
-
-
+    <div id="maincontent">
     {% with messages = get_flashed_messages(with_categories=True) %} 
         <ul>
             {% for category,message in messages %}
@@ -34,6 +60,7 @@
 
     {% block content %}
     {% endblock %}
+    </div>
 
 </body>
 </html>
